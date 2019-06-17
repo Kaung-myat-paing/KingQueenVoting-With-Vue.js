@@ -35,26 +35,48 @@
     </v-flex>
     <v-flex xs12 sm12 md4>
       <v-flex xs12 subheading font-weight-medium>ADD STUDENT</v-flex>
+
       <v-flex xs12 mt-5 font-weight-medium>FORM</v-flex>
+
       <v-layout row wrap mt-3>
         <v-flex xs12>
           <v-card>
             <v-layout row wrap>
               <v-flex pa-3>
                 <v-flex xs12>
-                  <v-text-field name="name" label="Name" id="id" v-model="studentInfo.name"></v-text-field>
+                  <v-text-field
+                    name="name"
+                    label="Name"
+                    id="id"
+                    v-model="studentInfo.name"
+                    :disabled="isEdit"
+                  ></v-text-field>
                 </v-flex>
                 <v-flex xs12>
-                  <v-text-field name="rollno" label="Roll No" id="id" v-model="studentInfo.rollno"></v-text-field>
+                  <v-text-field
+                    name="rollno"
+                    label="Roll No"
+                    id="id"
+                    v-model="studentInfo.rollno"
+                    :disabled="isEdit"
+                  ></v-text-field>
                 </v-flex>
                 <v-flex xs12>
                   <v-text-field name="vkey" label="VKey" id="id" disabled></v-text-field>
                 </v-flex>
                 <v-flex xs12>
-                  <v-switch label="IsVoted?" v-model="isvoted"></v-switch>
+                  <v-switch label="IsVoted?" v-model="isvoted" :disabled="isEdit"></v-switch>
                 </v-flex>
-                <v-flex xs12 text-xs-center>
+                <v-flex xs12 text-xs-center v-if="!studentInfo.name">
                   <v-btn round color="primary" dark>ADD STUDENT</v-btn>
+                </v-flex>
+                <v-flex xs12 text-xs-center v-if="isEdit">
+                  <v-btn round color="green" dark @click="isEdit=false;backupData()">EDIT STUDENT</v-btn>
+                  <v-btn round color="error" dark @click="isEdit=false;studentInfo={}">CLOSE</v-btn>
+                </v-flex>
+                <v-flex xs12 text-xs-center v-if="!isEdit && studentInfo.name">
+                  <v-btn round color="error" dark @click="restoreData()">RESET STUDENT</v-btn>
+                  <v-btn round color="warning" dark>UPDATE STUDENT</v-btn>
                 </v-flex>
               </v-flex>
             </v-layout>
@@ -70,6 +92,7 @@ export default {
   data: () => ({
     isvoted: false,
     studentList: [],
+    isEdit: false,
     studentInfo: { rollno: "", name: "" },
     years: [
       "All",
@@ -80,7 +103,7 @@ export default {
       "Fifth Year"
     ],
     major: ["ALL", "CS", "CT"],
-    aa: ""
+    clonedData: {}
   }),
   mounted() {
     this.getStudentList();
@@ -94,7 +117,22 @@ export default {
     getStudentInfo: function(rollno) {
       sampleApi.getStudentByRollno(rollno).then(res => {
         this.studentInfo = res.data;
+        this.isEdit = true;
       });
+    },
+    backupData: function() {
+      console.clear();
+      this.clonedData = Object.assign({}, this.studentInfo);
+      console.log("first clone info >>", JSON.stringify(this.clonedData));
+    },
+    restoreData: function() {
+      console.clear();
+      Object.assign(this.studentInfo, this.clonedData);
+      console.log("restore student info >>", JSON.stringify(this.studentInfo));
+      console.log(
+        "show cloned student info >>",
+        JSON.stringify(this.studentInfo)
+      );
     }
   }
 };
