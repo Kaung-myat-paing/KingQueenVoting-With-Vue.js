@@ -2,11 +2,11 @@
   <v-layout row wrap>
     <v-flex text-md-center title font-weight-medium>SELECTION LIST</v-flex>
     <v-flex xs12 md12>
-      <v-flex pt-5 headline>BOY</v-flex>
+      <v-flex pt-5 medium>BOY</v-flex>
       <!-- boy -->
       <v-layout row wrap>
         <!-- card 1 -->
-        <v-flex xs6 md3 mt-3>
+        <v-flex xs6 md3 mt-3 pl-2>
           <v-card width="350px" height="250px">
             <v-layout row wrap>
               <v-flex>
@@ -103,10 +103,10 @@
         </v-flex>
       </v-layout>
       <!-- girl -->
-      <v-flex pt-5 headline>GIRL</v-flex>
+      <v-flex pt-5 medium>GIRL</v-flex>
       <v-layout row wrap pt-4>
         <!-- card1 -->
-        <v-flex xs6 md3 mt-3>
+        <v-flex xs6 md3 mt-3 pl-2>
           <v-card width="350px" height="250px">
             <v-layout row wrap>
               <v-flex>
@@ -130,7 +130,7 @@
           </v-card>
         </v-flex>
         <!-- card2 -->
-        <v-flex xs6 md3 mt-3>
+        <v-flex xs6 md3 mt-3 pl-2>
           <v-card width="350px" height="250px">
             <v-layout row wrap>
               <v-flex>
@@ -154,7 +154,7 @@
           </v-card>
         </v-flex>
         <!-- card3 -->
-        <v-flex xs6 md3 mt-3>
+        <v-flex xs6 md3 mt-3 pl-2>
           <v-card width="350px" height="250px">
             <v-layout row wrap>
               <v-flex>
@@ -178,7 +178,7 @@
           </v-card>
         </v-flex>
         <!-- card4 -->
-        <v-flex xs6 md3 mt-3>
+        <v-flex xs6 md3 mt-3 pl-2>
           <v-card width="350px" height="250px">
             <v-layout row wrap>
               <v-flex>
