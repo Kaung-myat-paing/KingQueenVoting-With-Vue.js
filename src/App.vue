@@ -47,7 +47,7 @@ export default {
       items: [
         { title: "HOME" , to:"/"},
         { title: "STUDENT" , to:"/student"},
-        { title: "SELECTION" },
+        { title: "SELECTION", to:"/selection" },
         { title: "VOTING RESULT" },
         { title: "IMAGE" }
       ]
