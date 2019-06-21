@@ -33,9 +33,7 @@
         </v-flex>
       </v-layout>
     </v-flex>
-    <v-flex xs12 sm12 md4
-  App running at:
-  - Local:   http:>
+    <v-flex xs12 sm12 md4>
       <v-flex xs12 subheading font-weight-medium>ADD STUDENT</v-flex>
 
       <v-flex xs12 mt-5 font-weight-medium>FORM</v-flex>
@@ -56,9 +54,7 @@
                 </v-flex>
                 <v-flex xs12>
                   <v-text-field
-                    name="
-  App running at:
-  - Local:   http:rollno"
+                    name="rollno"
                     label="Roll No"
                     id="id"
                     v-model="studentInfo.rollno"
